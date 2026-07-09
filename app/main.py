@@ -1,14 +1,28 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 
+from app.config.settings import settings
+from app.core.startup import on_startup
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    on_startup()
+    yield
+    
+
 app = FastAPI(
-    title="Enterprise AI Knowledge Assistant",
-    description="RAG-powered AI backend service",
-    version="1.0.0",
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    lifespan=lifespan,
 )
 
 @app.get("/")
-def health_check():
+async def health_check():
+    
     return {
         "status": "UP",
-        "application": "Enterprise AI Knowledge Assistant"
+        "application": settings.APP_NAME,
+        "environment": settings.ENVIRONMENT
     }
