@@ -13,7 +13,7 @@ class Settings(BaseSettings):
 
     LOG_LEVEL: str
 
-    OPENAI_API_KEY: str = ""
+    OPENAI_API_KEY: str
 
     model_config = SettingsConfigDict(
         env_file=".env",
