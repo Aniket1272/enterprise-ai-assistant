@@ -1,5 +1,5 @@
 from app.chunking.chunk_service import ChunkService
-from app.embeddings.embedding_service import EmbeddingService
+from app.ai.embeddings.ollama_embedding import EmbeddingService
 from app.loaders.pdf_loader import PDFLoader
 
 

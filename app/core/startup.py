@@ -1,7 +1,7 @@
 import logging
 
-from app.config.logging_config import setup_logging
-from app.config.settings import settings
+from app.core.logging_config import setup_logging
+from app.core.settings import settings
 
 logger = logging.getLogger(__name__)
 

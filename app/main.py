@@ -2,8 +2,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.api.routes.document_routes import router as document_router
-from app.config.settings import settings
+from app.api.v1.document_routes import router as document_router
+from app.core.settings import settings
 from app.core.startup import on_startup
 
 

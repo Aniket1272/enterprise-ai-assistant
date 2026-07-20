@@ -34,6 +34,6 @@ class PDFLoader:
 
         raw_text = "\n".join(extracted_text)
 
-        clean_text = TextProcessor.clean(raw_text)        
+        clean_text = TextProcessor.process(raw_text)        
 
         return "\n".join(clean_text)

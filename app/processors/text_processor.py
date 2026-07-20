@@ -4,9 +4,9 @@ import re
 class TextProcessor:
 
     @staticmethod
-    def clean(text: str) -> str:
+    def process(text: str) -> str:
         """
-        Clean extracted PDF text.
+        Clean or Process extracted PDF text.
         """
 
         # Remove multiple blank lines
