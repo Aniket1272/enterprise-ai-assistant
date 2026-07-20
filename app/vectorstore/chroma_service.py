@@ -1,5 +1,6 @@
 import chromadb
 from chromadb.config import Settings
+from app.core.settings import settings
 
 
 class ChromaService:
@@ -7,11 +8,11 @@ class ChromaService:
     def __init__(self):
 
         self.client = chromadb.PersistentClient(
-            path="data/chroma"
+            path=settings.CHROMA_PATH
         )
 
         self.collection = self.client.get_or_create_collection(
-            name="documents"
+            name=settings.CHROMA_COLLECTION
         )
 
 

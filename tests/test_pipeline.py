@@ -2,6 +2,7 @@ from app.loaders.pdf_loader import PDFLoader
 from app.processors.text_processor import TextProcessor
 from app.chunking.chunk_service import ChunkService
 from app.ai.embeddings.factory import EmbeddingFactory
+from app.repositories.chroma_repository import ChromaRepository
 
 
 def main():
@@ -22,9 +23,22 @@ def main():
 
     embedding = EmbeddingFactory.create()
 
-    vectors = embedding.embed_documents(chunks)
+    #embeddings
+    vectors = embedding.embed_documents(chunks) 
+
+    repository = ChromaRepository()
+
+    #doc_ids or chunk_ids
+    ids = repository.save_documents(
+        chunks,
+        vectors
+    )
+
+    print()
 
     print(f"Embeddings Generated : {len(vectors)}")
+
+    print(f"Vectors : {len(ids)}")
 
     print(f"Vector Dimension : {len(vectors[0])}")
 
