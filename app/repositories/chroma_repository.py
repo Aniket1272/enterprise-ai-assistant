@@ -40,3 +40,15 @@ class ChromaRepository:
         )
 
         return ids
+    
+
+    def search_similar_documents(
+            self,
+            query_embedding,
+            top_k=4
+    ):
+        
+        return self.collection.query(
+            query_embeddings=[query_embedding],
+            n_results=top_k
+        )

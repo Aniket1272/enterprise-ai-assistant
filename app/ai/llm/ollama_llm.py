@@ -7,7 +7,7 @@ class OllamaLLM(BaseLLM):
 
     def __init__(self):
         
-        self.model = ChatOllama(
+        self.llm = ChatOllama(
             model=settings.CHAT_MODEL,
             base_url=settings.OLLAMA_BASE_URL,
             temperature=0,
@@ -16,7 +16,7 @@ class OllamaLLM(BaseLLM):
 
     def generate(self, prompt: str):
         
-        responses = self.model.invoke(prompt)
+        responses = self.llm.invoke(prompt)
 
         return responses.content
 

@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.api.v1.document_routes import router as document_router
+from app.api.v1.chat_routes import router as chat_router
 from app.core.settings import settings
 from app.core.startup import on_startup
 
@@ -20,6 +21,7 @@ app = FastAPI(
 )
 
 app.include_router(document_router)
+app.include_router(chat_router)
 
 @app.get("/")
 async def health_check():

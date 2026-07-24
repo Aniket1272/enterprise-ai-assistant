@@ -9,10 +9,27 @@ def main():
 
     text = PDFLoader.load("uploads/sample.pdf")
 
-    cleaned = TextProcessor().process(text)
+    print("=" * 60)
+    print("RAW TEXT")
+    print("=" * 60)
+    print(text[:1000])
 
-    chunks = ChunkService.split(cleaned)
 
+    processed = TextProcessor.process(text)
+
+    print("=" * 60)
+    print("PROCESSED TEXT")
+    print("=" * 60)
+    print(processed[:1000])
+
+
+    chunks = ChunkService().split(processed)
+
+    print("=" * 60)
+    print("FIRST CHUNK")
+    print("=" * 60)
+    print(chunks[0].page_content)
+    
     embedding_service = EmbeddingFactory.create()
 
     embeddings = embedding_service.embed_documents(chunks)
